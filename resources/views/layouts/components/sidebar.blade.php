@@ -21,53 +21,53 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{('provinsi')}}">
+              <a class="nav-link" href="../admin/provinsi">
                 <i class="ni ni-pin-3 text-orange"></i>
                 <span class="nav-link-text">Provinsi</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{('kota')}}">
+              <a class="nav-link" href="../admin/kota">
                 <i class="ni ni-pin-3 text-primary"></i>
                 <span class="nav-link-text">Kota</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{('kecamatan')}}">
+              <a class="nav-link" href="../admin/kecamatan">
                 <i class="ni ni-pin-3 text-yellow"></i>
                 <span class="nav-link-text">Kecamatan</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{('kelurahan')}}">
+              <a class="nav-link" href="../admin/kelurahan">
                 <i class="ni ni-pin-3 text-default"></i>
                 <span class="nav-link-text">Kelurahan</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{('rw')}}">
+              <a class="nav-link" href="../admin/rw">
                 <i class="ni ni-pin-3 text-green"></i>
                 <span class="nav-link-text">RW</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{('kasus')}}">
+              <a class="nav-link" href="../admin/jumlahkasus">
                 <i class="ni ni-pin-3 text-red"></i>
                 <span class="nav-link-text">Kasus</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="../login">
                 <i class="ni ni-key-25 text-info"></i>
                 <span class="nav-link-text">Login</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="register.html">
+              <a class="nav-link" href="../register">
                 <i class="ni ni-circle-08 text-pink"></i>
                 <span class="nav-link-text">Register</span>
               </a>
-            </li>
+            </li> -->
           </ul> 
           </ul>
         </div>

@@ -22,7 +22,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>No</th>
+                                    <th>Nomor</th>
                                     <th>Kode Provinsi</th>
                                     <th>Nama Provinsi</th>
                                     <th colspan="3"><center>Aksi</center></th>
@@ -39,6 +39,9 @@
                                         <td>{{$data->kode_provinsi}}</td>
                                         <td>{{$data->nama_provinsi}}</td>
                                         <td>
+                                        <form action="{{route('provinsi.destroy',$data->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
                                             <a href="{{route('provinsi.show',$data->id)}}" class="btn btn-info">Show</a>
                                         </td>
                                         <td>

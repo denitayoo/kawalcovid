@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\rw;
+use App\Models\Kelurahan;
+use App\Models\Rw;
+
 use Illuminate\Http\Request;
 
 class RwController extends Controller
@@ -14,7 +16,8 @@ class RwController extends Controller
      */
     public function index()
     {
-        //
+        $rw = Rw::with('kelurahan')->get();
+        return view('admin.rw.index',compact('rw'));
     }
 
     /**
@@ -24,7 +27,8 @@ class RwController extends Controller
      */
     public function create()
     {
-        //
+        $kelurahan = Kelurahan::all();
+        return view('admin.rw.create',compact('kelurahan'));
     }
 
     /**
@@ -35,7 +39,15 @@ class RwController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+           
+            'nama_rw' => 'required|unique:rws|max:255',
+        ]);
+        $rw = new Rw();
+        $rw->nama_rw = $request->nama_rw;
+        $rw->id_kelurahan = $request->id_kelurahan;
+        $rw->save();
+        return redirect()->route('rw.index');
     }
 
     /**
@@ -44,9 +56,11 @@ class RwController extends Controller
      * @param  \App\Models\rw  $rw
      * @return \Illuminate\Http\Response
      */
-    public function show(rw $rw)
+    public function show($id)
     {
-        //
+        $rw = Rw::findOrFail($id);
+        $kelurahan = Kelurahan::all();
+        return view('admin.rw.show',compact('rw','kelurahan'));
     }
 
     /**
@@ -55,9 +69,12 @@ class RwController extends Controller
      * @param  \App\Models\rw  $rw
      * @return \Illuminate\Http\Response
      */
-    public function edit(rw $rw)
+    public function edit($id)
     {
-        //
+        $rw = Rw::findOrFail($id);
+        $kelurahan = Kelurahan::all();
+        $selected = $rw->kelurahan->pluck('id')->toArray();
+        return view('admin.rw.edit',compact('rw','kelurahan','selected'));
     }
 
     /**
@@ -67,9 +84,17 @@ class RwController extends Controller
      * @param  \App\Models\rw  $rw
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, rw $rw)
+    public function update(Request $request,$id)
     {
-        //
+        $validated = $request->validate([
+            
+            'nama_rw' => 'required|unique:rws|max:255',
+        ]);
+        $rw = Rw::findOrFail($id);
+        $rw->nama_rw = $request->nama_rw;
+        $rw->id_kelurahan = $request->id_kelurahan;
+        $rw->save();
+        return redirect()->route('rw.index');
     }
 
     /**
@@ -78,8 +103,10 @@ class RwController extends Controller
      * @param  \App\Models\rw  $rw
      * @return \Illuminate\Http\Response
      */
-    public function destroy(rw $rw)
+    public function destroy($id)
     {
-        //
+        $rw = Rw::findOrFail($id);
+        $rw->delete();
+        return redirect()->route('rw.index');
     }
 }

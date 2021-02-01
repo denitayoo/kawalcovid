@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\jumlahkasus;
+use App\Models\Jumlahkasus;
+use App\Models\Rw;
+use App\Models\Kelurahan;
+use App\Models\Kecamatan;
+use App\Models\Kota;
+use App\Models\Provinsi;
+
+
 use Illuminate\Http\Request;
 
 class JumlahkasusController extends Controller
@@ -14,7 +21,8 @@ class JumlahkasusController extends Controller
      */
     public function index()
     {
-        //
+        $jumlahkasus = Jumlahkasus::with('rw.kelurahan.kecamatan.kota.provinsi')->orderBy('id','DESC')->get();
+        return view('admin.jumlahkasus.index',compact('jumlahkasus'));
     }
 
     /**
@@ -24,7 +32,8 @@ class JumlahkasusController extends Controller
      */
     public function create()
     {
-        //
+        $rw = Rw::all();
+        return view('admin.jumlahkasus.create',compact('rw'));
     }
 
     /**
@@ -35,7 +44,15 @@ class JumlahkasusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $jumlahkasus = new Jumlahkasus();
+        $jumlahkasus->reaktif   =$request->reaktif;
+        $jumlahkasus->jumlah_positif   =$request->jumlah_positif;
+        $jumlahkasus->jumlah_sembuh    =$request->jumlah_sembuh;
+        $jumlahkasus->jumlah_meninggal =$request->jumlah_meninggal;
+        $jumlahkasus->tanggal          =$request->tanggal;
+        $jumlahkasus->id_rw            =$request->id_rw;
+        $jumlahkasus->save();
+        return redirect()->route('jumlahkasus.index')->with(['succes'=>'Data Berhasil diinput']);   
     }
 
     /**
@@ -44,9 +61,16 @@ class JumlahkasusController extends Controller
      * @param  \App\Models\jumlahkasus  $jumlahkasus
      * @return \Illuminate\Http\Response
      */
-    public function show(jumlahkasus $jumlahkasus)
+    public function show($id)
     {
-        //
+        $title = 'Detail kasus';
+        $jumlahkasus = Jumlahkasus::findOrFail($id);
+        $rw = Rw::all();
+        $kelurahan = Kelurahan::all();
+        $kecamatan = Kecamatan::all();
+        $kota      = Kota::all();
+        $provinsi  = Provinsi::all();
+        return view('admin.jumlahkasus.show',compact('rw','kelurahan','kecamatan','kota','provinsi','jumlahkasus'));
     }
 
     /**
@@ -55,9 +79,11 @@ class JumlahkasusController extends Controller
      * @param  \App\Models\jumlahkasus  $jumlahkasus
      * @return \Illuminate\Http\Response
      */
-    public function edit(jumlahkasus $jumlahkasus)
+    public function edit($id)
     {
-        //
+        $rw = Rw::all();
+        $kasus = Rw::findOrFail($id);
+        return view('admin.jumlahkasus.edit',compact('jumlahkasus','rw'));
     }
 
     /**
@@ -67,9 +93,16 @@ class JumlahkasusController extends Controller
      * @param  \App\Models\jumlahkasus  $jumlahkasus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, jumlahkasus $jumlahkasus)
+    public function update(Request $request, $id)
     {
-        //
+        $jumlahkasus = Jumlahkasus::findOrFail($id);
+        $jumlahkasus->reaktif   =$request->reaktif;
+        $jumlahkasus->jumlah_sembuh    =$request->jumlah_sembuh;
+        $jumlahkasus->jumlah_meninggal =$request->jumlah_meninggal;
+        $jumlahkasus->tanggal          =$request->tanggal;
+        $jumlahkasus->id_rw            =$request->id_rw;
+        $jumlahkasus->save();
+        return redirect()->route('jumlahkasus.index')->with(['succes'=>'Data <b>',$jumlahkasus->jumlah_positif,'</b>Data Berhasil diubah']); 
     }
 
     /**
@@ -78,8 +111,13 @@ class JumlahkasusController extends Controller
      * @param  \App\Models\jumlahkasus  $jumlahkasus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(jumlahkasus $jumlahkasus)
+    public function destroy($id)
     {
-        //
+        $jumlahkasus = Jumlahkasus::findOrFail($id); 
+        $jumlahkasus->delete();
+        return redirect()->route('jumlahkasus.index')->with(['success'=>'Data <b>',$jumlahkasus->jumlah_positif,'</b> Berhasil dihapus']);
     }
 }
+
+
+

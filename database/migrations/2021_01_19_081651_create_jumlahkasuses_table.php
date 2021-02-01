@@ -16,10 +16,11 @@ class CreateJumlahkasusesTable extends Migration
         Schema::create('jumlahkasuses', function (Blueprint $table) {
             $table->id();
 
-           $table->bigInteger('id_rw')->unsigned();
-            $table->string('jumlah_positif'); 
-            $table->string('jumlah_meninggal');
-            $table->string('jumlah_sembuh');
+            $table->bigInteger('id_rw')->unsigned();
+            $table->integer('reaktif'); 
+            $table->integer('jumlah_positif'); 
+            $table->integer('jumlah_meninggal');
+            $table->integer('jumlah_sembuh');
             $table->date('tanggal');
            
             $table->foreign('id_rw')->references('id')->on('rws')

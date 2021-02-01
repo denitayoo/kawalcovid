@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\kota;
+use App\Models\Provinsi;
 use Illuminate\Http\Request;
 
 class KotaController extends Controller
@@ -14,7 +15,7 @@ class KotaController extends Controller
      */
     public function index()
     {
-        $kota = Kota::all();
+        $kota = Kota::with('provinsi')->get();
         return view('admin.kota.index',compact('kota'));
     }
 
@@ -25,7 +26,8 @@ class KotaController extends Controller
      */
     public function create()
     {
-        return view('admin.kota.create');
+        $provinsi = Provinsi::all();
+        return view('admin.kota.create', compact('provinsi'));
     }
 
     /**
@@ -36,11 +38,17 @@ class KotaController extends Controller
      */
     public function store(Request $request)
     {
-        // $provinsi = new Provinsi();
+        $validated = $request->validate([
+            'kode_kota' => 'required|unique:kotas|max:255',
+            'nama_kota' => 'required|unique:kotas|max:255',
+        ]);
+     
+        $kota = new Kota();
         $kota->kode_kota = $request->kode_kota;
         $kota->nama_kota = $request->nama_kota;
+        $kota->id_provinsi = $request->id_provinsi;
         $kota->save();
-        return redirect()->route('admin.kota.index');
+        return redirect()->route('kota.index');
     }
 
     /**
@@ -52,7 +60,8 @@ class KotaController extends Controller
     public function show($id)
     {
         $kota = Kota::findOrFail($id);
-        return view('admin.kota.show',compact('kota'));
+        $provinsi = Provinsi::all();
+        return view('admin.kota.show',compact('kota','provinsi'));
     }
 
     /**
@@ -64,7 +73,9 @@ class KotaController extends Controller
     public function edit($id)
     {
         $kota = Kota::findOrFail($id);
-        return view('admin.kota.show',compact('kota'));
+        $provinsi = Provinsi::all();
+        $selected = $kota->provinsi->pluck('id')->toArray();
+        return view('admin.kota.edit',compact('kota','provinsi','selected'));
     }
 
     /**
@@ -74,11 +85,17 @@ class KotaController extends Controller
      * @param  \App\Models\kota  $kota
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        $kota = Kelas::findOrFail($id);
+        $validated = $request->validate([
+            'kode_kota' => 'required|unique:kotas|max:255',
+            'nama_kota' => 'required|unique:kotas|max:255',
+        ]);
+     
+        $kota = Kota::findOrFail($id);
         $kota->kode_kota = $request->kode_kota;
         $kota->nama_kota = $request->nama_kota;
+        $kota->id_provinsi = $request->id_provinsi;
         $kota->save();
         return redirect()->route('kota.index');
     }
@@ -91,7 +108,8 @@ class KotaController extends Controller
      */
     public function destroy($id)
     {
-        $kota = Kota::findOrFail($id)->delete();
+        $kota = Kota::findOrFail($id);
+        $kota->delete();
         return redirect()->route('kota.index');
     }
 }

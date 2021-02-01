@@ -16,7 +16,7 @@ class CreateNegarasTable extends Migration
         Schema::create('negaras', function (Blueprint $table) {
             $table->id();
          
-            $table->integer('kode_negara');
+            $table->string('kode_negara');
             $table->string('nama_negara');
             
             $table->timestamps();

@@ -17,7 +17,7 @@ class CreateKecamatansTable extends Migration
             $table->id();
 
             $table->bigInteger('id_kota')->unsigned(); 
-            $table->integer('kode_kecamatan');
+            $table->string('kode_kecamatan');
             $table->string('nama_kecamatan');
            
             $table->foreign('id_kota')->references('id')->on('kotas')

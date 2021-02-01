@@ -48,7 +48,7 @@
         <ul class="navbar-nav mr-auto">
       
           <li class="nav-item">
-            <a href="login.html" class="nav-link">
+            <a href="../login" class="nav-link">
               <span class="nav-link-inner--text">Login</span>
             </a>
           </li>

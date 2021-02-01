@@ -5,15 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Show Provinsi</div>
+                <div class="card-header">Show Kelurahan</div>
                 <div class="card-body">
                     <div class="form-group">
-                    <label>Kode Provinsi</label>
-                    <input type="text" name="kode_provinsi" value="{{$provinsi->kode_provinsi}}" class="form-control" readonly>
+                    <label>Nama Kelurahan</label>
+                    <input type="text" name="nama_kelurahan" value="{{$kelurahan->nama_kelurahan}}" class="form-control" readonly>
                     </div>
                     <div class="form-group">
-                    <label>Nama Provinsi</label>
-                    <input type="text" name="nama_provinsi" value="{{$provinsi->nama_provinsi}}" class="form-control" readonly>
+                        <label for="">Asal kecamatan</label>
+                        <input type="text" name="id_kecamatan" class="form-control" value="{{$kelurahan->kecamatan->nama_kecamatan}}" readonly>
                     </div>
                     <div class="form-group">
                     <a href="{{url()->previous()}}" class="btn btn-primary">Kembali</a>
