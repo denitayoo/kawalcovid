@@ -21,7 +21,8 @@ class JumlahkasusController extends Controller
      */
     public function index()
     {
-        $jumlahkasus = Jumlahkasus::with('rw.kelurahan.kecamatan.kota.provinsi')->orderBy('id','DESC')->get();
+    
+        $jumlahkasus = Jumlahkasus::with('rw.kelurahan.kecamatan.kota.provinsi')->get();
         return view('admin.jumlahkasus.index',compact('jumlahkasus'));
     }
 
@@ -82,7 +83,7 @@ class JumlahkasusController extends Controller
     public function edit($id)
     {
         $rw = Rw::all();
-        $kasus = Rw::findOrFail($id);
+        $jumlahkasus = Jumlahkasus::findOrFail($id);
         return view('admin.jumlahkasus.edit',compact('jumlahkasus','rw'));
     }
 
@@ -97,6 +98,7 @@ class JumlahkasusController extends Controller
     {
         $jumlahkasus = Jumlahkasus::findOrFail($id);
         $jumlahkasus->reaktif   =$request->reaktif;
+        $jumlahkasus->jumlah_positif   =$request->jumlah_positif;
         $jumlahkasus->jumlah_sembuh    =$request->jumlah_sembuh;
         $jumlahkasus->jumlah_meninggal =$request->jumlah_meninggal;
         $jumlahkasus->tanggal          =$request->tanggal;
