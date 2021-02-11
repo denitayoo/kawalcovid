@@ -7,6 +7,8 @@ use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\KelurahanController;
 use App\Http\Controllers\RwController;
 use App\Http\Controllers\JumlahkasusController;
+
+use App\Http\Controllers\FrontendController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,5 +37,11 @@ Route::group(['prefix' => 'admin', 'middleware'=>['auth']], function () {
    Route::resource('kelurahan',KelurahanController::class);
    Route::resource('rw',RwController::class);
    Route::resource('jumlahkasus',JumlahkasusController::class);
+
 });
 
+Route::get('dashboard',function () {
+    return view('dashboard.index');
+});
+
+Route::resource('/frontend',FrontendController::class);

@@ -5,7 +5,7 @@
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
-        <a class="navbar-brand" href="{{asset('assets/javascript:void(0)')}}">
+        <a class="navbar-brand" href="..">
         <span class="nav-link text-blue">Kawal Covid</span> 
       </a>
       </div>
@@ -15,7 +15,7 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="../admin">
+              <a class="nav-link active" href="../dashboard">
                 <i class="ni ni-tv-2 text-primary"></i>
                 <span class="nav-link-text">Dashboard</span>
               </a>

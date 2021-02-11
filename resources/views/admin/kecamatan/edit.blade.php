@@ -14,13 +14,7 @@
                 <form action="{{route('kecamatan.update',$kecamatan->id)}}" method="POST">
                    @csrf
                    @method('PATCH')
-                   <div class="form-group">
-                        <label>Kode Kecamatan</label>
-                        <input type="text" name="kode_kecamatan" value="{{$kecamatan->kode_kecamatan}}" class="form-control" required>
-                        @if ($errors->has('kode_kecamatan'))
-                        <span class="text-danger">{{ $errors->first('kode_kecamatan') }}</span>
-                        @endif
-                        </div>
+                  
                         <div class="form-group">
                         <label>Nama Kecamatan</label>
                         <input type="text" name="nama_kecamatan" value="{{$kecamatan->nama_kecamatan}}" class="form-control" required>

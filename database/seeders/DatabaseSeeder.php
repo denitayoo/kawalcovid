@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-          // \App\Models\Provinsi::factory(20)->create();
+          
           $this->call([
             ProvinsiSeeder::class,
             KotaSeeder::class,

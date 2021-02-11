@@ -21,7 +21,6 @@
                             <thead>
                                 <tr>
                                     <th>Nomor</th>   
-                                    <th>Kode kecamatan</th>
                                     <th>Nama Kecamatan</th>
                                     <th>Nama Kota</th>
                                     <th colspan="3">Aksi</th>
@@ -34,8 +33,7 @@
                                 @csrf
                                 @method('DELETE')
                                     <tr>
-                                        <td>{{$no++}}</td>
-                                        <td>{{$data->kode_kecamatan}}</td>
+                                        <td>{{$no++}}</td>            
                                         <td>{{$data->nama_kecamatan}}</td>
                                         <td>{{$data->kota->nama_kota}}</td>
                                         <form action="{{route('kecamatan.destroy',$data->id)}}" method="POST">
