@@ -22,17 +22,31 @@ class FrontendController extends Controller
         ->get();
            return view('frontend.index',compact('provinsi'));
 }
-public function Indonesia()
-{
-              $positif = DB::table('jumlahkasuses')
-              ->sum("jumlahkasuses.jumlah_positif");
 
-              $sembuh = DB::table('jumlahkasuses')
-              ->sum("jumlahkasuses.jumlah_sembuh");
+public function Indonesia(){
+    $jumlah_positif = DB::table('jumlahkasuses')
+                    ->select('jumlahkasuses.jumlah_positif')
+                    ->sum('jumlahkasuses.jumlah_positif');
 
-              $meninggal = DB::table('jumlahkasuses')
-              ->sum("jumlahkasuses.jumlah_meninggal");
-              return view('frontend.index',compact('pos,sem,men'));  
+    $jumlah_sembuh = DB::table('jumlahkasuses')
+                    ->select('jumlahkasuses.jumlah_sembuh')
+                    ->sum('jumlahkasuses.jumlah_sembuh');
+
+    $jumlah_meninggal = DB::table('jumlahkasuses')
+                    ->select('jumlahkasuses.jumlah_meninggal')
+                    ->sum('jumlahkasuses.jumlah_meninggal');
+
+    return response([
+                'success' => true,
+                'data' => [
+                'name' => 'Indonesia',
+                'jumlah_positif'=> $jumlah_positif,
+                'jumlah_sembuh'=> $jumlah_sembuh,
+                'jumlah_meninggal'=> $jumlah_meninggal,
+                        ],
+                                'message' => ' Berhasil!',
+
+                    ]);
 
 }
 }
