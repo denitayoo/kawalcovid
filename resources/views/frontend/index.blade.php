@@ -51,7 +51,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="{{url('login')}}">Home</a></h1>
+      <h1 class="logo mr-auto"><a href="{{url('/frontend')}}">Home</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo mr-auto"><img src="assets2/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -61,7 +61,8 @@
           <li><a href="#kasus">Data Kasus</a></li>
           <li><a href="#kasusdunia">Data Kasus Dunia</a></li>
           <li><a href="#kasusindonesia">Data Kasus Indonesia</a></li>
-          <li><a href="#gallery">Poto</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#gallery">Gallery</a></li>
           <!-- <li class="drop-down"><a href="">Data Negara</a>
             <ul>
               <li><a href="provinsi">Provinsi</a></li>
@@ -79,8 +80,8 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container">
-      <h1>Welcome to Kawal Covid</h1>
-      <h2>Kita Berjuang Bersama Melawan Corona | Sasageyooo!</h2>
+      <h1 >Welcome to Kawal Covid</h1>
+      <h2 >Kita Berjuang Bersama Melawan Corona | Sasageyooo!</h2>
     </div>
   </section><!-- End Hero -->
 
@@ -104,10 +105,10 @@
           <div class="d-flex">
            <div class="text-white">
             <p class="text-white mb-0">TOTAL POSITIF</p>
-            <h2 class="mb-0 number-font"><?php echo $posglobal['value'] ?></h2>
+            {{-- <h2 class="mb-0 number-font"> echo $posglobal['value'] ?></h2> --}}
             <p class="text-white mb-0">ORANG</p>
            </div>
-           <div class="ml-auto"> <img src="{{asset('assets/img/sad-u6e.png')}}" width="50" height="50" alt="Positif"> </div>
+           {{-- <div class="ml-auto"> <img src="{{asset('assets/img/sad-u6e.png')}}" width="50" height="50" alt="Positif"> </div> --}}
           </div>
          </div>
         </div>
@@ -118,10 +119,10 @@
           <div class="d-flex">
            <div class="text-white">
             <p class="text-white mb-0">TOTAL SEMBUH</p>
-            <h2 class="mb-0 number-font"><?php echo $semglobal['value'] ?></h2>
+            {{-- <h2 class="mb-0 number-font"> echo $semglobal['value'] ?></h2> --}}
             <p class="text-white mb-0">ORANG</p>
            </div>
-           <div class="ml-auto"> <img src="{{asset('assets/img/happy-ipM.png')}}" width="50" height="50" alt="Positif"> </div>
+           {{-- <div class="ml-auto"> <img src="{{asset('assets/img/happy-ipM.png')}}" width="50" height="50" alt="Positif"> </div> --}}
           </div>
          </div>
         </div>
@@ -132,10 +133,10 @@
           <div class="d-flex">
            <div class="text-white">
             <p class="text-white mb-0">TOTAL MENINGGAL</p>
-            <h2 class="mb-0 number-font"><?php echo $menglobal['value'] ?></h2>
+            {{-- <h2 class="mb-0 number-font"> echo $menglobal['value'] ?></h2> --}}
             <p class="text-white mb-0">ORANG</p>
            </div>
-           <div class="ml-auto"> <img src="{{asset('assets/img/emoji-LWx.png')}}" width="50" height="50" alt="Positif"> </div>
+           {{-- <div class="ml-auto"> <img src="{{asset('assets/img/emoji-LWx.png')}}" width="50" height="50" alt="Positif"> </div> --}}
           </div>
          </div>
         </div>
@@ -146,7 +147,7 @@
           <div class="d-flex">
            <div class="text-white">
             <h2 class="text-white mb-0">INDONESIA</h2>
-            <p class="mb-0 number-font"><b>{{$positif}}</b> POSITIF, <b>{{$sembuh}}</b> SEMBUH, <b>{{$meninggal}}</b>MENINGGAL</p>
+            <p class="mb-0 number-font"><b>{{$positif}}</b> POSITIF, <b>{{$sembuh}}</b>SEMBUH,<b>{{$meninggal}}</b>MENINGGAL</p>
            </div>
            <div class="ml-auto"> <img src="{{asset('assets/img/indonesia-PZq.png')}}" width="50" height="50" alt="Positif"> </div>
           </div>
@@ -183,20 +184,20 @@
                                                 <th>MENINGGAL</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        {{-- <tbody>
                                             @php
                                             $no = 1;
                                           @endphp
                                             @foreach($dunia as $data)
                                                 <tr>     
-                                                  <th>{{$no++ }}</th>
-                                                  <th> <?php echo $data['attributes']['Country_Region'] ?></th>
-                                                  <th> <?php echo number_format($data['attributes']['Confirmed']) ?></th>
-                                                  <th><?php echo number_format($data['attributes']['Recovered'])?></th>
-                                                  <th><?php echo number_format($data['attributes']['Deaths'])?></th>
+                                                  <th> {{$no++ }}</th>
+                                                  <th> echo $data['attributes']['Country_Region'] ?> </th>
+                                                  <th> echo number_format($data['attributes']['Confirmed']) ?> </th>
+                                                  <th> echo number_format($data['attributes']['Recovered'])?> </th>
+                                                  <th> echo number_format($data['attributes']['Deaths'])?> </th>
                                                 </tr>
                                               @endforeach
-                                 </tbody>
+                                 </tbody> --}}
                                  </table>
                                 
                                
@@ -248,22 +249,43 @@
   &nbsp;  
   
 
-    <!-- ======= Why Us Section ======= -->
-     
-
-    <!-- ======= About Section ======= -->
-    
-    <!-- ======= Counts Section ======= -->
-    <!-- End Counts Section -->
-
-    <!-- ======= Services Section ======= -->
-    
+ 
     <!-- End Appointment Section -->
 
     <!-- ======= Departments Section ======= -->
+  
+      <div class="container">
+        <section id="news" class="news">
+        <div class="section-title">
+          <h2>News</h2>
+        
+        </div>
+      </div>
     
-    
+    <div>
+      <br>
+      <div class="row">
+<div class="col-md-12 col-xl-6">
+<a href="https://www.unicef.org/indonesia/id/coronavirus">
+<div class="card text-white bg-info">
+<div class="card-body">
+<h4 class="card-title">Novel coronavirus (COVID-19): Hal-hal yang perlu Anda ketahui</h4>
+<p class="card-text">Unicef Indonesia</p> <br> <br>
+</div>
+</div>
+</div></a><!-- COL END -->
+<div class="col-md-12 col-xl-6">
+<a href="https://www.kompas.com/tren/read/2020/03/03/183500265/infografik-daftar-100-rumah-sakit-rujukan-penanganan-virus-corona">
+<div class="card text-white bg-secondary">
+<div class="card-body">
+<h4 class="card-title">Daftar 100 Rumah Sakit Rujukan Penanganan Virus Corona</h4>
+<p class="card-text">Kompas</p> <br> <br>
+</div>
+</div>
+</div></a><!-- COL END -->
 
+      <!-- FOOTER -->
+      </div>
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
       <div class="container">

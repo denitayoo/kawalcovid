@@ -44,4 +44,4 @@ Route::get('dashboard',function () {
     return view('dashboard.index');
 });
 
-Route::resource('/frontend',FrontendController::class);
+Route::resource('/',FrontendController::class);

@@ -112,7 +112,10 @@ Virus ini menular melalui percikan dahak (droplet) dari saluran pernapasan, misa
                     <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
                 </div>
             </div>
+            <div id="preloader"></div>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
         </section>
+        
         <!-- Footer-->
         <footer class="footer bg-black small text-center text-white-50"><div class="container">Copyright © Your Website 2020</div></footer>
         <!-- Bootstrap core JS-->

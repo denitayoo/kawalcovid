@@ -25,12 +25,12 @@ class FrontendController extends Controller
         'jumlahkasuses.jumlah_sembuh','jumlahkasuses.jumlah_meninggal')
         ->join('jumlahkasuses','rws.id','=','jumlahkasuses.id_rw')
         ->sum('jumlahkasuses.jumlah_meninggal');
-    $globalpositif = file_get_contents('https://api.kawalcorona.com/positif');
-    $posglobal = json_decode($globalpositif, TRUE);
-    $globalsembuh= file_get_contents('https://api.kawalcorona.com/sembuh');
-    $semglobal = json_decode($globalsembuh, TRUE);
-    $globalmeninggal = file_get_contents('https://api.kawalcorona.com/meninggal');
-    $menglobal = json_decode($globalmeninggal, TRUE);
+    // $globalpositif = file_get_contents('https://api.kawalcorona.com/positif');
+    // $posglobal = json_decode($globalpositif, TRUE);
+    // $globalsembuh= file_get_contents('https://api.kawalcorona.com/sembuh');
+    // $semglobal = json_decode($globalsembuh, TRUE);
+    // $globalmeninggal = file_get_contents('https://api.kawalcorona.com/meninggal');
+    // $menglobal = json_decode($globalmeninggal, TRUE);
     // Date
     $tanggal = Carbon::now()->format('D d-M-Y h:i:s');
 
@@ -49,10 +49,11 @@ class FrontendController extends Controller
               ->get();
 
     // Table Global
-    $datadunia= file_get_contents("https://api.kawalcorona.com/");
-    $dunia = json_decode($datadunia, TRUE);
+    // $datadunia= file_get_contents("https://api.kawalcorona.com/");
+    // $dunia = json_decode($datadunia, TRUE);
+    // ,'posglobal','semglobal','menglobal','dunia'
         
-    return view('frontend.index',compact('positif','sembuh','meninggal','posglobal','semglobal','menglobal', 'tanggal','tampil','dunia'));
+    return view('frontend.index',compact('positif','sembuh','meninggal', 'tanggal','tampil'));
     }
         
 }

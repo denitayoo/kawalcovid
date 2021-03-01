@@ -14,9 +14,7 @@
                         <div class="form-group">
                         <label>Nama Rw</label>
                         <input type="text" name="nama_rw" class="form-control" required>
-                        @if ($errors->has('nama_rw'))
-                        <span class="text-danger">{{ $errors->first('nama_rw') }}</span>
-                        @endif
+                      
                         </div>
                         <div class="form-group">
                         <label>Nama Kelurahan</label>

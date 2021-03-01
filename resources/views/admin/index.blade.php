@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-<h1>Ini Halaman Admin</h1>
+<h1>Ini Halaman Dashboard</h1>
 @endsection
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -191,4 +191,4 @@
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>
-</html>
+</html> --}}

@@ -23,9 +23,7 @@
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="dashboard.html">
-        <img src="{{asset('assets/img/brand/white.png')}}">
-      </a>
+     
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -152,10 +150,8 @@
                 <div class="row my-4">
                   <div class="col-12">
                     <div class="custom-control custom-control-alternative custom-checkbox">
-                      <input class="custom-control-input" id="customCheckRegister" type="checkbox">
-                      <label class="custom-control-label" for="customCheckRegister">
-                        <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
-                      </label>
+                    
+                     
                     </div>
                   </div>
                 </div>
@@ -170,7 +166,7 @@
     </div>
   </div>
   <!-- Footer -->
-  <footer class="py-5" id="footer-main">
+  {{-- <footer class="py-5" id="footer-main">
     <div class="container">
       <div class="row align-items-center justify-content-xl-between">
         <div class="col-xl-6">
@@ -196,7 +192,7 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> --}}
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="{{asset('assets/vendor/jquery/dist/jquery.min.js')}}"></script>

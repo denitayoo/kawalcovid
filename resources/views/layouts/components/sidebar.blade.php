@@ -5,7 +5,7 @@
     <div class="scrollbar-inner">
       <!-- Brand -->
       <div class="sidenav-header  align-items-center">
-        <a class="navbar-brand" href="..">
+        <a class="navbar-brand" href="#">
         <span class="nav-link text-blue">Kawal Covid</span> 
       </a>
       </div>
